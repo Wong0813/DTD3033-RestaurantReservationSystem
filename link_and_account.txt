@@ -1,0 +1,10 @@
+Website Link:
+https://d06337.schtg.com/Group_Project/customerSide/home/home.php
+
+Staff Login:
+Username: 1
+Password: 123456
+
+User Login:
+Username: try@gmail.com
+Password: 123456

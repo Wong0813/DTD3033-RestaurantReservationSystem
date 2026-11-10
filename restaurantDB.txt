@@ -1,0 +1,129 @@
+CREATE DATABASE IF NOT EXISTS restaurantdb;
+USE restaurantdb;
+
+CREATE TABLE IF NOT EXISTS accounts (
+  account_id INT PRIMARY KEY,
+  email VARCHAR(255),
+  register_date DATE,
+  phone_number VARCHAR(255),
+  password VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS memberships (
+  member_id INT PRIMARY KEY AUTO_INCREMENT,
+  member_name VARCHAR(255),
+  points INT,
+  account_id INT,
+  FOREIGN KEY (account_id) REFERENCES accounts(account_id)
+);
+
+CREATE TABLE IF NOT EXISTS menu (
+  item_id VARCHAR(6) PRIMARY KEY,
+  item_name VARCHAR(255),
+  item_type VARCHAR(255),
+  item_category VARCHAR(255),
+  item_price DECIMAL(10, 2),
+  item_description VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS reservations (
+  reservation_id BIGINT PRIMARY KEY,
+  customer_name VARCHAR(255),
+  reservation_time TIME,
+  reservation_date DATE,
+  head_count INT,
+  special_request VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS staffs (
+  staff_id INT PRIMARY KEY,
+  staff_name VARCHAR(255),
+  role VARCHAR(255),
+  account_id INT,
+  FOREIGN KEY (account_id) REFERENCES accounts(account_id)
+);
+
+
+INSERT INTO accounts (account_id, email, register_date, phone_number, password) VALUES 
+(1, 'john@gmail.com', '2023-08-31', '+1234567890', 'password123'),
+(2, 'susan@gmail.com', '2023-08-30', '+1987654321', 'susanpassword'),
+(3, 'james@gmail.com', '2023-08-29', '+18887776666', 'jamespass'),
+(4, 'alice@gmail.com', '2023-08-28', '+15555555555', 'alicepassword'),
+(5, 'mike@gmail.com', '2023-08-27', '+14444444444', 'mikepass'),
+(6, 'lisa@gmail.com', '2023-08-26', '+13333333333', 'lisapassword'),
+(7, 'robert@gmail.com', '2023-08-25', '+12222222222', 'robertpass'),
+(8, 'emily@gmail.com', '2023-08-24', '+16666666666', 'emilypassword'),
+(9, 'david@gmail.com', '2023-08-23', '+1993219999', 'davidp321ass'),
+(10, 'ddwd@gmail.com', '2023-08-23', '+1999999329999', 'davidpa2ss'),
+(11, 'dadsvawvid@gmail.com', '2023-08-23', '+12234132199', 'david4pass'),
+(12, 'davdavid@gmail.com', '2023-08-23', '+123239999', 'davidp13ass'),
+(13, 'davvdasid@gmail.com', '2023-08-23', '+1995324319999', 'david2pass'),
+(14, '321david@gmail.com', '2023-08-23', '+1942199999', 'davidpa52ss'),
+(15, '32avid@gmail.com', '2023-08-23', '+1942193429999', 'da2332ss'),
+(16, '321da543vid@gmail.com', '2023-08-23', '+1942132199999', 'dav43a52ss'),
+(17, '3211234avid@gmail.com', '2023-08-23', '+194213599999', '32533pa52ss'),
+(18, '321543avid@gmail.com', '2023-08-23', '+1942154399999', '754dpa52ss'),
+(19, 'rbsjsd@gmail.com', '2023-08-23', '+131351241239', '41f2s'),
+(20, 'ol435143ivia@gmail.com', '2023-08-22', '+18888888888', 'oliviapass4215word'),
+(21, 'robber@gmail.com', '2023-09-01', '+1234567890', 'password123'),
+(22, 'jean@gmail.com', '2023-09-02', '+2345678901', 'password456'),
+(23, 'emily@gmail.com', '2023-09-03', '+3456789012', 'password789'),
+(24, 'robert@gmail.com', '2023-09-04', '+4567890123', 'passwordabc'),
+(25, 'zoe@gmail.com', '2023-09-05', '+5678901234', 'passworddef'),
+(26, 'lisa@gmail.com', '2023-09-06', '+6789012345', 'passwordghi'),
+(27, 'taylor@gmail.com', '2023-09-07', '+7890123456', 'passwordjkl'),
+(28, 'stephan@gmail.com', '2023-09-08', '+8901234567', 'passwordmno'),
+(29, 'bruce@gmail.com', '2023-09-09', '+9012345678', 'passwordpar'),
+(30, 'jackie@gmail.com', '2023-09-10', '+0123456789', 'passwordstu'),
+(31, 'gateng510@gmail.com', '2026-01-05', '12323', '123'),
+(32, '111', '2026-01-05', '11111', '111'),
+(33, 'gqteng10@gmail.com', '2026-01-05', '01159175006', '111111');
+
+INSERT INTO memberships (member_id, member_name, points, account_id) VALUES 
+(1, 'Abbel TuTuTu', 100, 11),
+(2, 'Abignail Downey', 200, 12),
+(3, 'Jamie Mustafa', 300, 13),
+(4, 'Luke Gun Slinger', 400, 14),
+(5, 'Johny Rings', 500, 15),
+(6, 'Wee Tuu Low', 600, 16),
+(7, 'Sum Ting Wong', 700, 17),
+(8, 'Ho Lee Fuk', 800, 18),
+(9, 'Bang Ding Ow', 900, 19),
+(10, 'Rocky Rocket', 1000, 20),
+(11, 'Robber Hellington', 250, 21),
+(12, 'Jean Ng', 300, 22),
+(13, 'Emily Davis', 400, 23),
+(14, 'Robert Wilson', 550, 24),
+(15, 'Zoe Chong', 650, 25),
+(16, 'Lisa Chia', 750, 26),
+(17, 'Taylor Swift', 900, 27),
+(18, 'Stephan Curry', 1050, 28);
+
+INSERT INTO menu (item_id, item_name, item_type, item_category, item_price, item_description) VALUES
+('C1', 'Kamikaze', 'Classic Cocktails', 'Drinks', 30.00, 'cocktails'),
+('C2', 'Singapore Sling', 'Classic Cocktails', 'Drinks', 29.00, 'cocktails'),
+('CP1', 'Green Apple', 'Cold Pressed Juice', 'Drinks', 15.00, 'fresh pressed juice'),
+('HD1', 'Brownies', 'House Dessert', 'Side Snacks', 15.00, 'delicious brownies'),
+('L1', 'Blended Scotch (Black Label)', 'Liquor', 'Drinks', 310.00, 'Johnny Walker Black Label Sherry 700ml'),
+('MD1', 'Prime Rib Steak', 'Steak & Ribs', 'Main Dishes', 96.00, '300g'),
+('MD15', 'Classic Cheese Burger', 'Burgers & Sandwiches', 'Main Dishes', 30.00, 'delicious burger'),
+('S1', 'Buffalo Wings', 'Bar Bites', 'Side Snacks', 24.00, 'delicious buffalo wings'),
+('SK1', 'Chicken Tenders', 'Shoney Kid', 'Side Snacks', 12.00, 'delicious chicken tenders');
+
+INSERT INTO reservations (reservation_id, customer_name, reservation_time, reservation_date, head_count, special_request) VALUES 
+(1820237, 'Jean Ng', '18:30:00', '2023-10-03', 2, 'Allergies: peanuts'),
+(1920233, 'Jamie Mustafa', '19:30:00', '2023-09-30', 2, 'Vegan options needed'),
+(2020234, 'Luke Gun Slinger', '20:00:00', '2023-09-30', 3, 'Birthday celebration'),
+(2220232, 'Abignaile Lin Downney Jr', '22:00:34', '2023-09-29', 1, 'Default Special Request'),
+(58272030, 'Wong', '13:00:00', '2026-01-05', 1, 'halo');
+
+INSERT INTO staffs (staff_id, staff_name, role, account_id) VALUES 
+(1, 'John Smith', 'Waiter', 1),
+(2, 'Susan Johnson', 'Waiter', 2),
+(3, 'James Brown', 'Waiter', 3),
+(4, 'Alice Davis', 'Waiter', 4),
+(5, 'Mike Wilson', 'Waiter', 5),
+(6, 'Lisa Martinez', 'Chef', 6),
+(7, 'Robert Miller', 'Manager', 7),
+(8, 'Emily Moore', 'Manager', 8),
+(9, 'David Taylor', 'Chef', 9);
