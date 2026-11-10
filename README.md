@@ -5,7 +5,7 @@ A web-based restaurant reservation and management system developed for the DTD30
 ## 🌐 Live Website & Demo Accounts
 
 - **Website Link**: [https://d06337.schtg.com/Group_Project/customerSide/home/home.php](https://d06337.schtg.com/Group_Project/customerSide/home/home.php)
-- **Account File**: Refer to [`link_and_account.pdf`](./link_and_account.pdf) or [`link_and_account.txt`](./link_and_account.txt)
+- **Account File**: Refer to [`link_and_account.txt`](./link_and_account.txt)
 
 ### Test Accounts
 - **Staff Login**:
